@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+body{
+  background: #010202; /* Цвет фона */
+  font-family: 'Source Sans Pro', sans-serif;; 
+}
+a{
+  text-decoration: none; /* Любая ссылка на сайте не будет подчеркнута */
+}
+.header{
+width: 90%; /*При изменении экрана, хедер не будет прилипать к краю*/
+max-width: 1146px;
+margin: auto; /* Наш хедер будет по середине */
+padding: 56px 0; /* 56- это отступ сверху, 0- отступ по бокам */
+display: flex; /* Расположение элементов горизонтально */
+justify-content: space-between; /* Равномерно распределяет все элементы по ширине flex-блока. Первый элемент вначале, последний в конце */
+align-items: center; /* Центрируется наш аватар относительно нашему хедеру*/
+} 
+.logo{
+  display: block;
+}
+.header-avatar{ /* Позиция аватара и его размер + скругление на 50% */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.user{
+  display: flex;
+  align-items: center;
+}
+.user-name{
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  margin-right: 15px;
+}
+/*Задаем градиент фоновому изображению от черного к серому и размер изображения*/
+.app{
+  background: linear-gradient(90deg, #010202 0%, #010202 43%, rgba(1, 2, 2, 0.2) 99.9%);
+  /*url('../img/cover-image12.jpg') no-repeat right/50%;  Вместо изображения подключил видео через js*/
+  height: auto;
+  min-height: 100vh;
+  color: white;
+  
+}
+/*-------------------------------*/
+
+.film{
+  width: 90%; /*При изменении экрана этот блок не будет прилипать к краю*/
+  max-width: 1146px;
+  margin: auto;
+  padding: 5% 5%; /*5% - отступ сверху снизу от элемента, 5% - справа слева*/
+}
+.tags{
+  color: #E5E5E5;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap; /*Свойство, теги будут выстраиваться с ряд если не помещаются на экране*/
+  opacity: 0.4; /*Прозрачность текста (40%) в блоке*/
+  font-size: 16px; /*Размер шрифта*/
+  line-height: 140%; /*Расстояние от блока tags до блока description*/
+}
+.tags > * { 
+margin-right: 15px; /*Отступы между блоками "span"*/
+margin-bottom: 10px; /*Расстояние между span, когда теги будут выстраиваться в один ряд*/
+}
+.age{
+  opacity: 0.5;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 1px 5px; /*Отступы от края рамки*/
+}
+.description{
+  max-width: 460px;
+  font-size: 21px;
+  line-height: 140%;
+  margin-bottom: 36px;
+}
+/*Оформление кнопок*/
+.button{
+padding: 11px 26px; /*11 - Отступы сверху снизу, 26 - по бокам*/
+border-radius: 6px; /*Скругление*/
+border: none; /*Убираем рамку внитри кнопок*/
+font-size: 16px;
+line-height: 140%;
+background: #2F2F2F;
+color:white;
+cursor: pointer; /*При наведении на кнопку курсор становится рукой*/
+}
+.buttom-primary{
+background: #EA6E20; /*Цвет кнопки*/
+margin-right: 15px; /*Отступ кнопок друг от друга*/
+}
+.button-text{
+  margin-left: 10px; /*Расстояние от иконки до текста*/
+  vertical-align: text-bottom; /*Выравнивание текста относительно иконки */
+}
+/*-------------------------------*/
+
+/*Правила для адаптивности сайта под другие разрешения*/
+@media (max-width: 1200px){ /*Будут применятся правила если разрешение экрана 1200 и меньше*/
+}
+@media (max-width: 820px){ /*Будут применятся правила если разрешение экрана 820 и меньше*/
+  .app{
+   height: auto;
+   padding-bottom: 330px; /*Расстаяние картинки (фонового) от блока с информацией*/
+   /*background-size: 300px; *//*Свойство благодаря которому картинка не будет съежать ниже при разрешении экрана 820px и ниже. Тем самым мы приколотили гвоздями к определенному месту.Потребовалось закоментировать так как подключили через js видео*/
+   background: url('../img/cover-image12.jpg') no-repeat bottom center/ 300px; /*На данном размере будет подключаться эта картинка вместо видео*/
+   align-items: center;
+  }
+  video{ /*При разрешении экрана 820 и ниже видео отключается*/
+    display: none;
+  }
+  .film{
+    padding-top: 1%; /*Расстояние от хедера до информационного блока*/
+  } 
+  .description{
+    font-size: 16px;
+    max-width: 333px;
+  } 
+  .film-logo{
+    max-width: 100%;
+  }
+  }
+  @media (max-width: 600px){ /*Это правило сделано для примера своийства background-size: -прибивание гвоздями*/
+    .app{
+     height: auto;
+     padding-bottom: 380px; /*Расстаяние картинки (фонового) от блока с информацией.*/
+     background-position: bottom center; /*Если экран ниже разрешения 600px, то картинка съежает вниз и становиться по центру*/
+     background-image: url('../img/cover-image12.jpg'); /*На данном размере будет подключаться эта картинка вместо видео*/
+    }
+  }
+  @media (max-width: 511px){
+    .button-text{
+      display: none;
+    }
+    .user-name{
+      display: none;
+    }
+    .app{
+      padding-bottom: 350px; /*Расстаяние картинки (фонового) от блока с информацией*/
+      /*background-size: 300px; *//*Свойство благодаря которому картинка не будет съежать ниже при разрешении экрана 501px и ниже. Тем самым мы приколотили гвоздями к определенному месту. Для примера посмотреть разрешение экрана 600px.*/
+      background-image: url('../img/cover-image12.jpg'); /*На данном размере будет подключаться эта картинка вместо видео*/
+    }
+    .button{
+      margin-bottom: 10px;
+    }
+  }
+  @media (max-width: 330px){ /*При разрешении экрана 330 и ниже кнопки будут центрироваться относительно экрану*/
+    .buttom-default{
+      display: block;
+      margin-left: 33%;
+      margin-right: 33%;
+      padding: 6px 37px;
+    }
+    .buttom-primary{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
